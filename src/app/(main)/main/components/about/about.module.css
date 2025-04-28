@@ -1,0 +1,104 @@
+.about {
+  background-color: white;
+  background-image: url("../../../../../../public/bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+}
+
+.leftClouds {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leftCloudLarge {
+  top: -11rem;
+  position: absolute;
+  z-index: 2;
+}
+
+.leftCloudSmall {
+  position: absolute;
+  top: -6rem;
+  left: 14rem;
+}
+
+.rightClouds {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.rightCloudLarge {
+  position: absolute;
+  right: 0;
+  top: -8rem;
+}
+
+.rightCloudSmall {
+  z-index: 2;
+  right: 12rem;
+  top: -8rem;
+  position: absolute;
+}
+
+.rightCloudHalf {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 5rem;
+}
+
+.aboutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 130px 0;
+}
+
+.aboutTitle {
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: uppercase;
+  color: black;
+}
+
+.aboutBlocks {
+  display: flex;
+  gap: 50px;
+}
+
+.aboutBlock {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 183, 255, 0.3) 100%
+  );
+  max-width: 370px;
+  padding: 150px 37px 30px;
+  color: black;
+}
+
+.aboutBlockTitle {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.aboutBlockDescription {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+}
