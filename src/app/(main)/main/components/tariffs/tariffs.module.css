@@ -1,0 +1,96 @@
+.tariffs {
+  background-color: #4fb1ff;
+  background-image: url("../../../../../../public/bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.tariffsTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 91px;
+
+  color: #ffffff;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.tariffsContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tariffsBlocks {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.tariffBlockFirst {
+  background-image: url("../../../../../../public/basic.png");
+}
+
+.tariffBlockSecond {
+  background-image: url("../../../../../../public/extended.png");
+}
+.tariffBlockThird {
+  background-image: url("../../../../../../public/maestro.png");
+}
+
+.tariffBlock {
+  width: 300px;
+  height: 500px; /* Mask group */
+
+  filter: drop-shadow(0px 4px 9.6px #0a395e);
+
+  border-radius: 20px;
+  padding: 56px 33px 33px 33px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tariffBlockTitle {
+  /* Начальный */
+
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  text-transform: uppercase;
+
+  color: #0065b4;
+  margin-bottom: 30px;
+}
+
+.tariffBlockTitleSecond {
+  color: #ffffff !important;
+}
+
+.tariffBlockPrice {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 39px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  color: #0065b4;
+}
+
+.tariffBlockButton {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #0065b4;
+  border: 1px solid #0065b4;
+  border-radius: 9px;
+  padding: 5px 28px;
+  margin-top: 10px;
+}

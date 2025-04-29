@@ -2,6 +2,7 @@ import About from "./components/about/about";
 import Advantages from "./components/advantages/advantages";
 import Hero from "./components/hero/hero";
 import Player from "./components/player/player";
+import Tariffs from "./components/tariffs/tariffs";
 
 export default function Page() {
   return (
@@ -10,6 +11,7 @@ export default function Page() {
       <About />
       <Player />
       <Advantages />
+      <Tariffs />
     </div>
   );
 }
