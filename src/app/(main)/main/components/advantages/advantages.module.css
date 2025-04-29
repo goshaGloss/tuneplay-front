@@ -1,0 +1,60 @@
+.advantages {
+  background-color: #d0eaff;
+  background-image: url("../../../../../../public/bg-white.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+}
+
+.advantagesContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 0;
+}
+
+.advantagesTitle {
+  font-size: 36px;
+  font-weight: 600;
+  color: #0065b4;
+  text-align: center;
+}
+
+.advantagesBlocks {
+  display: flex;
+  margin-top: 60px;
+  justify-content: center;
+  gap: 56px;
+}
+
+.advantagesBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px;
+  height: 350px;
+}
+
+.advantagesBlockTitle {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 21px;
+  font-weight: 600;
+  color: #0065b4;
+  text-align: center;
+}
+
+.advantagesBlockSubtitle {
+  font-size: 16px;
+  color: black;
+  text-align: center;
+}
+
+.rightCloudLarge {
+  position: absolute;
+  right: 0;
+  top: -16rem;
+}
