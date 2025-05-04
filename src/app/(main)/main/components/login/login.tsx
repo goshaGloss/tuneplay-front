@@ -6,7 +6,6 @@ const Login = () => {
   return (
     <div id="login" className={styles.login}>
       <div className={styles.loginContainer}>
-        <div></div>
         <form>
           <Image
             alt="left-cloud-large"

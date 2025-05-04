@@ -84,3 +84,20 @@
   line-height: 33px;
   color: #ffffff;
 }
+@media (max-width: 900px) {
+  .loginContainer form {
+    padding: 0;
+  }
+  .loginContainer {
+    justify-content: center;
+  }
+  .loginTitle {
+    text-align: center;
+  }
+  .inputWrapper {
+    width: auto;
+  }
+  .login {
+    background-size: auto 100%;
+  }
+}

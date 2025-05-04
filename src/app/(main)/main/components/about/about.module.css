@@ -102,3 +102,15 @@
   letter-spacing: 0%;
   text-align: center;
 }
+
+@media (max-width: 900px) {
+  .leftClouds,
+  .rightClouds {
+    display: none;
+  }
+  .aboutBlocks {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+}

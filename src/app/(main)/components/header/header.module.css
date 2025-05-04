@@ -56,3 +56,9 @@
   background-color: #ffc369;
   border: none;
 }
+
+@media (max-width: 1080px) {
+  .header {
+    display: none;
+  }
+}

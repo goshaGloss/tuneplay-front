@@ -58,3 +58,16 @@
   right: 0;
   top: -16rem;
 }
+
+@media (max-width: 900px) {
+  .rightCloudLarge {
+    display: none;
+  }
+  .advantagesBlocks {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .advantages {
+    background-size: auto 100%;
+  }
+}

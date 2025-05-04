@@ -5,3 +5,11 @@ body {
 html {
   scroll-behavior: smooth;
 }
+@media (max-width: 900px) {
+  .leftClouds > * {
+    display: none !important;
+  }
+  .rightClouds img {
+    display: none !important;
+  }
+}

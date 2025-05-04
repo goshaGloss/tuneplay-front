@@ -167,3 +167,37 @@
   font-weight: 600;
   color: white;
 }
+
+@media (max-width: 968px) {
+  .player {
+    background-size: auto 100%;
+  }
+  .playerBlocks {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 32px 0;
+  }
+
+  .playerCircles {
+    width: auto;
+    height: auto;
+    align-items: center;
+    padding: 36px;
+    gap: 8px;
+  }
+  .playerBlockCircleThird,
+  .playerBlockCircleSecond,
+  .playerBlockCircleFirst {
+    margin: 0;
+    width: 100px;
+    height: 100px;
+  }
+
+  .playerBlockRightTitle {
+    text-align: center;
+  }
+  .playerBlockRight {
+    justify-content: center;
+    align-items: center;
+  }
+}

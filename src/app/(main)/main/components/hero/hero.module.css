@@ -1,5 +1,6 @@
 .hero {
   background-color: #4fb1ff;
+
   background-image: url("../../../../../../public/bg.png");
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -23,6 +24,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 1080px) {
+  .heroBlock {
+    padding: 60px 36px;
+  }
+}
+
+@media (max-width: 968px) {
+  .hero {
+    background-size: auto 100%;
+  }
+  .heroBlock {
+    box-shadow: none;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+  }
 }
 
 .heroTitle {
