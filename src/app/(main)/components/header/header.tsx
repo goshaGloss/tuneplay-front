@@ -26,7 +26,23 @@ const Header = () => {
         </button>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
-          <Image alt="logo" src="/golden-logo.svg" width={165} height={60} />
+          <div className={styles.navHeader}>
+            <Image
+              alt="logo"
+              className={styles.goldenLogo}
+              src="/golden-logo.svg"
+              width={165}
+              height={60}
+            />
+            <Image
+              className={styles.xIcon}
+              onClick={() => setMenuOpen(false)}
+              alt="x"
+              src="/x-icon.svg"
+              width={24}
+              height={24}
+            />
+          </div>
 
           <ul className={styles.navList}>
             <li className={styles.navItem}>

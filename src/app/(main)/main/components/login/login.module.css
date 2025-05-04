@@ -43,6 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .inputWrapper input {
@@ -83,6 +84,18 @@
   font-size: 27px;
   line-height: 33px;
   color: #ffffff;
+}
+
+.toggleButton {
+  position: absolute;
+  top: 55%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
 }
 @media (max-width: 900px) {
   .loginContainer form {
