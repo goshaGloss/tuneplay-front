@@ -31,42 +31,27 @@
   grid-template-rows: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
-  background-color: #f7f7f7;
 
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.2;
   color: #000;
-}
-
-.mainGame {
-  grid-row: span 2;
-  background-color: #d8f0ff;
-  border-radius: 12px;
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-}
-
-.playNow {
-  color: #ffa500;
-  font-size: 20px;
-  font-weight: bold;
 }
 
 .card {
   background-color: #fff;
   border-radius: 12px;
-  padding: 20px;
-
+  padding: 16px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  height: 250px;
+  color: #000000;
 }
 
 .content {
@@ -77,18 +62,11 @@
 }
 
 .card img {
-  width: auto;
+  max-width: 100%;
   height: auto;
 }
 
-.content div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Цвета карточек */
+/* Цвета */
 .orange {
   background-color: #fdb94d;
 }
@@ -101,9 +79,20 @@
   background-color: #ffb9ec;
 }
 
-.rhythmImages {
+/* Уникальный стиль для основной игры */
+.mainGame {
+  background-color: #d8f0ff;
+  height: 520px;
+}
+
+.playNow {
+  color: orange;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.cardColumn {
   display: flex;
-  flex-direction: row;
-  gap: 10px;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
