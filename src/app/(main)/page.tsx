@@ -1,9 +1,12 @@
+"use client";
+
 export const dynamic = "force-dynamic";
 
-import { redirect } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 
 function Page() {
-  return redirect("/main");
+  const pathname = usePathname();
+  if (pathname === "/") redirect("main");
 }
 
 export default Page;

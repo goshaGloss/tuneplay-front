@@ -5,7 +5,7 @@ import cloudStyles from "../about/about.module.css";
 
 const Tariffs = () => {
   return (
-    <div className={styles.tariffs}>
+    <div id="tariffs" className={styles.tariffs}>
       <div className={cloudStyles.leftClouds}>
         <Image
           className={cloudStyles.leftCloudLarge}

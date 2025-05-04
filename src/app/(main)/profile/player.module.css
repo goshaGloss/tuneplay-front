@@ -1,0 +1,47 @@
+.player {
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+
+.info {
+  flex: 1;
+}
+
+.title {
+  font-weight: bold;
+  display: block;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.controls button {
+  color: white;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.progress {
+  flex: 1;
+  background: #ddd;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: #0070f3;
+  width: 0;
+  transition: width 0.2s ease;
+}

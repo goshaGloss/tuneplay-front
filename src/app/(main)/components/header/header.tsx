@@ -12,15 +12,15 @@ const Header = () => {
         <nav>
           <ul className={styles.navList}>
             <li className={styles.navItem}>
-              <a href="#home">О нас</a>
+              <a href="#about">О нас</a>
             </li>
             <hr className={styles.navLinkSeparator} />
             <li className={styles.navItem}>
-              <a href="#about">Мини-игры</a>
+              <a href="#minigames">Мини-игры</a>
             </li>
             <hr className={styles.navLinkSeparator} />
             <li className={styles.navItem}>
-              <a href="#services">Тарифы</a>
+              <a href="#tariffs">Тарифы</a>
             </li>
           </ul>
         </nav>
@@ -28,10 +28,10 @@ const Header = () => {
           <Link href={"/"} className={styles.navLink}>
             <Image alt="instagram" src="instagram.svg" width={33} height={33} />
           </Link>
-          <Link href={"/"} className={styles.navLink}>
+          <Link href={"/profile"} className={styles.navLink}>
             <Image alt="profile" src="profile.svg" width={33} height={33} />
           </Link>
-          <Link href={"/"} className={styles.navLink}>
+          <Link href={"#login"} className={styles.navLink}>
             Войти
           </Link>
         </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const MiniGames = () => {
   return (
-    <div className={styles.miniGames}>
+    <div id="minigames" className={styles.miniGames}>
       <p className={styles.miniGamesTitle}>Мини-игры</p>
 
       <div className={styles.miniGamesContainer}>

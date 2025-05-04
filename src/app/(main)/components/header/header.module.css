@@ -2,13 +2,14 @@
   position: absolute;
   top: 36px;
   width: 100%;
-  padding: 0 440px;
 }
 
 .headerContainer {
-  display: flex;
+  margin: 0 auto;
   justify-content: space-between;
   align-items: center;
+  display: flex;
+  max-width: 1000px;
 }
 
 .navList {

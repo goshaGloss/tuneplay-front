@@ -1,0 +1,86 @@
+.login {
+  background-color: #4fb1ff;
+  background-image: url("../../../../../../public/bg.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.loginContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 150px;
+  gap: 16px;
+}
+
+.loginTitle {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 59px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.loginTitle:last-child {
+  font-weight: 700;
+}
+
+.inputWrapper {
+  width: 496px;
+  height: 51px;
+  background-color: #24a8f3;
+  border-radius: 25.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputWrapper input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Arial", sans-serif;
+  border-radius: 15px;
+  cursor: text;
+  border: 1px solid white;
+}
+
+.inputWrapper input::placeholder {
+  color: white;
+
+  font-family: "Montserrat Alternates";
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.loginButton {
+  padding: 7px 44px;
+  outline: none;
+  border: none;
+  background: #ffad31;
+  border-radius: 8px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 33px;
+  color: #ffffff;
+}
