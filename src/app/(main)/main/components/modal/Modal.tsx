@@ -9,14 +9,16 @@ export default function Modal({
   onSubmit,
 }: {
   onClose: () => void;
-  onSubmit: (email: string, password: string) => void;
+  onSubmit: (email: string, password: string, callback: () => void) => void;
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const handleSubmit = () => {
     if (email.trim() !== "" && password.trim() !== "") {
-      onSubmit(email, password);
+      setIsLoading(true);
+      onSubmit(email, password, () => setIsLoading(false));
       setEmail("");
       setPassword("");
     }
@@ -25,21 +27,23 @@ export default function Modal({
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <h2 className={styles.title}>Введите почту</h2>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          className={styles.input}
-        />
-        <h2 className={styles.title}>Введите пароль</h2>
+        <h2 className={styles.modalTitle}>Регистрация</h2>
+        <div className={styles.inputWrapper}>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Введите Email"
+            className={styles.input}
+          />
+        </div>
+
         <div className={styles.inputWrapper}>
           <input
             type={visible ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Пароль"
+            placeholder="Введите Пароль"
             className={styles.input}
           />
           <button
@@ -51,11 +55,15 @@ export default function Modal({
           </button>
         </div>
         <div className={styles.actions}>
-          <button className={styles.submit} onClick={handleSubmit}>
-            Создать аккаунт
-          </button>
-          <button className={styles.cancel} onClick={onClose}>
-            Отмена
+          <button
+            className={styles.submit}
+            onClick={handleSubmit}
+            disabled={isLoading}
+          >
+            <span>{isLoading ? "" : "Создать аккаунт"}</span>
+            <span
+              className={`${styles.spinner} ${isLoading ? styles.show : ""}`}
+            ></span>
           </button>
         </div>
       </div>

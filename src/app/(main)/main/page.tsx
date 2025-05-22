@@ -14,15 +14,17 @@ import { useState } from "react";
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onSubmit = (email: string, password: string) => {
+  const onSubmit = (email: string, password: string, callback: () => void) => {
     axios
-      .post("http://localhost:8080/api/customer/create", {
+      .post("https://185.4.180.127:8080/api/customer/create", {
         email,
         password,
       })
       .then(({ data }: AxiosResponse<{ token: string }>) => {
+        callback();
         localStorage.setItem("token", data.token);
-      });
+      })
+      .catch(() => callback());
   };
   return (
     <div>

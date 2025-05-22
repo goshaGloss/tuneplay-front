@@ -30,7 +30,7 @@ const MusicProfile = () => {
     if (!token) return;
     axios
       .post(
-        "http://localhost:8080/api/song/new",
+        "https://185.4.180.127:8080/api/song/new",
         { title, theme },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -43,7 +43,7 @@ const MusicProfile = () => {
     const token = localStorage.getItem("token");
     if (!token) redirect("/");
     axios
-      .get("http://localhost:8080/api/customer/info", {
+      .get("https://185.4.180.127:8080/api/customer/info", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }: AxiosResponse<User>) => {
@@ -59,7 +59,12 @@ const MusicProfile = () => {
 
         <ul className={styles.songList}>
           {songs.map((song, index) => (
-            <MusicPlayer key={index} title={song.title} text={song.text} src={"beat 1.mp3"} />
+            <MusicPlayer
+              key={index}
+              title={song.title}
+              text={song.text}
+              src={"beat 1.mp3"}
+            />
           ))}
         </ul>
 
