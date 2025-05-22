@@ -19,7 +19,7 @@ const Login = ({ openModal }: { openModal: () => void }) => {
   };
   const loginAction = (email: string, password: string) => {
     axios
-      .post("http://185.4.180.127:8080/api/customer/auth", {
+      .post("http://localhost:8080/api/customer/auth", {
         email,
         password,
       })

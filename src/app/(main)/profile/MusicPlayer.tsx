@@ -7,13 +7,16 @@ import Image from "next/image";
 export default function MusicPlayer({
   title,
   src,
+  text,
 }: {
   title: string;
   src: string;
+  text: string;
 }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -63,8 +66,32 @@ export default function MusicPlayer({
               style={{ width: `${progress}%` }}
             ></div>
           </div>
+          <button
+            className={styles.lyricsButton}
+            onClick={() => setIsModalOpen(true)}
+          >
+            Текст песни
+          </button>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div
+          className={styles.modalBackdrop}
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <h2>Текст песни</h2>
+            <pre className={styles.lyrics}>{text}</pre>
+            <button
+              className={styles.lyricsButtonCancel}
+              onClick={() => setIsModalOpen(false)}
+            >
+              Закрыть
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

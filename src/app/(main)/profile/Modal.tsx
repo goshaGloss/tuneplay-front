@@ -12,11 +12,10 @@ export default function Modal({
 }) {
   const [prompt, setPrompt] = useState("");
   const [title, setTitle] = useState("");
-  const [keywords, setKeywords] = useState("");
 
   const handleSubmit = () => {
-    if (prompt.trim() !== "") {
-      onSubmit(prompt, title, keywords);
+    if (prompt.trim() !== "" && title.trim() !== "") {
+      onSubmit(title,prompt);
       setPrompt("");
     }
   };
@@ -27,12 +26,12 @@ export default function Modal({
         <h2 className={styles.title}>Введите название песни</h2>
         <input
           type="text"
-          value={prompt}
+          value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Название песни"
           className={styles.input}
         />
-        <h2 className={styles.title}>Введите промпт</h2>
+        <h2 className={styles.title}>Введите тематику песни</h2>
         <input
           type="text"
           value={prompt}
@@ -40,14 +39,7 @@ export default function Modal({
           placeholder="Например: энергичная EDM для тренировки"
           className={styles.input}
         />
-        <h2 className={styles.title}>Введите ключевые слова</h2>
-        <input
-          type="text"
-          value={prompt}
-          onChange={(e) => setKeywords(e.target.value)}
-          placeholder="Ключевые слова"
-          className={styles.input}
-        />
+
         <div className={styles.actions}>
           <button className={styles.submit} onClick={handleSubmit}>
             Сгенерировать

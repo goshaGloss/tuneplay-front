@@ -9,20 +9,19 @@ import MiniGames from "./components/mini-games/mini-games";
 import Modal from "./components/modal/Modal";
 import Player from "./components/player/player";
 import { useState } from "react";
-import { redirect } from "next/navigation";
+// import Tariffs from "./components/tariffs/tariffs";
 
 export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onSubmit = (email: string, password: string) => {
     axios
-      .post("http://185.4.180.127:8080/api/customer/create", {
+      .post("http://localhost:8080/api/customer/create", {
         email,
         password,
       })
       .then(({ data }: AxiosResponse<{ token: string }>) => {
         localStorage.setItem("token", data.token);
-        redirect("profile");
       });
   };
   return (
