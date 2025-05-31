@@ -1,7 +1,12 @@
 import Image from "next/image";
 import styles from "./advantages.module.css";
+import { Advantage } from "../../page";
 
-const Advantages = () => {
+const Advantages = ({
+  advantages,
+}: {
+  advantages: Advantage[] | undefined;
+}) => {
   return (
     <div className={styles.advantages}>
       <Image
@@ -16,43 +21,38 @@ const Advantages = () => {
           Преимущества нашего сервиса для создания мелодии
         </p>
         <div className={styles.advantagesBlocks}>
-          <div className={styles.advantagesBlock}>
-            <Image alt="freedom" src="/freedom.png" width={200} height={160} />
-            <p className={styles.advantagesBlockTitle}>Свобода творчества</p>
-            <p className={styles.advantagesBlockSubtitle}>
-              Открывайте новые инструменты и эффекты, чтобы создавать уникальные
-              мелодии.
-            </p>
-          </div>
-          <div className={styles.advantagesBlock}>
-            <Image
-              alt="freedom"
-              src="/simplicity.png"
-              width={200}
-              height={160}
-            />
-            <p className={styles.advantagesBlockTitle}>
-              Простота использования
-            </p>
-            <p className={styles.advantagesBlockSubtitle}>
-              Интуитивно понятный интерфейс позволяет легко освоить игру даже
-              начинающим музыкантам.
-            </p>
-          </div>
-          <div className={styles.advantagesBlock}>
-            <Image
-              alt="freedom"
-              src="/improvement.png"
-              width={180}
-              height={190}
-            />
-            <p className={styles.advantagesBlockTitle}>Постоянное развитие</p>
-            <p className={styles.advantagesBlockSubtitle}>
-              С каждым новым уровнем вы будете открывать новые возможности для
-              творчества, делая вашу музыку ещё более разнообразной и
-              интересной.
-            </p>
-          </div>
+          {advantages?.map((advantage, index) => {
+            return (
+              <div key={index} className={styles.advantagesBlock}>
+                {index === 0 ? (
+                  <Image
+                    alt="freedom"
+                    src="/freedom.png"
+                    width={200}
+                    height={160}
+                  />
+                ) : index === 1 ? (
+                  <Image
+                    alt="freedom"
+                    src="/simplicity.png"
+                    width={200}
+                    height={160}
+                  />
+                ) : (
+                  <Image
+                    alt="freedom"
+                    src="/improvement.png"
+                    width={180}
+                    height={190}
+                  />
+                )}
+                <p className={styles.advantagesBlockTitle}>{advantage.title}</p>
+                <p className={styles.advantagesBlockSubtitle}>
+                  {advantage.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
