@@ -1,10 +1,4 @@
-body {
-  font-family: var(--montserrat-alternates);
-}
 
-html {
-  scroll-behavior: smooth;
-}
 @media (max-width: 900px) {
   .leftClouds > * {
     display: none !important;
