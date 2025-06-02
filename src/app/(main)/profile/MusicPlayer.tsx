@@ -1,22 +1,33 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./player.module.css";
 import Image from "next/image";
+import { FaTrash } from "react-icons/fa";
+import axios from "axios";
 
 export default function MusicPlayer({
   title,
   src,
   text,
+  id,
+  updateSongs
 }: {
   title: string;
   src: string;
   text: string;
+  id:string;
+  updateSongs: () => void
 }) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+    const [token, setToken] = useState("")
+    
+    useEffect(() =>{
+      setToken(window.localStorage.getItem("token") ?? "")
+    },[])
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -41,7 +52,11 @@ export default function MusicPlayer({
     <div className={styles.player}>
       <audio ref={audioRef} src={src} onTimeUpdate={handleTimeUpdate} />
       <div className={styles.info}>
+        <div className={styles.deleteAndTitle}>
         <span className={styles.title}>{title}</span>
+        <FaTrash style={{color: "red", cursor: "pointer"}} onClick={() => axios.delete("http://185.4.180.127:8080/api/song/delete/"+id ,         { headers: { Authorization: `Bearer ${token}` } }
+).then((data) => {if(data.data.status === "success") updateSongs()})}/>
+        </div>
         <div className={styles.controls}>
           <button onClick={togglePlay}>
             {isPlaying ? (

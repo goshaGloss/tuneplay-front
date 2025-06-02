@@ -5,7 +5,6 @@ import styles from "./profile.module.css";
 import Modal from "./Modal";
 import MusicPlayer from "./MusicPlayer";
 import axios, { AxiosResponse } from "axios";
-import { redirect } from "next/navigation";
 import LeaderBoard from "./LeaderBoard";
 
 type Song = {
@@ -14,6 +13,7 @@ type Song = {
   create_at: string; // можно заменить на Date, если преобразуешь строку
   title: string;
   text: string;
+  music: string;
 };
 
 type User = {
@@ -71,7 +71,11 @@ const MusicProfile = () => {
               key={index}
               title={song.title}
               text={song.text}
-              src={"beat 1.mp3"}
+              id={song.id}
+              src={"http://185.4.180.127:8080/" + song.music}
+              updateSongs={() =>{
+                setSongs(songs.filter(songData => song.id !=songData.id))
+              }}
             />
           ))}
         </ul>

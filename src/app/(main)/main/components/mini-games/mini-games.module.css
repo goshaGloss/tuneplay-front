@@ -8,6 +8,7 @@
   min-height: 100vh;
   position: relative;
   padding-top: 125px;
+  color: white;
 }
 
 .miniGamesContainer {
@@ -20,8 +21,7 @@
   font-weight: 700;
   font-size: 64px;
   line-height: 78px;
-  color: white;
-  
+  color: #000000;
   margin-bottom: 77px;
   text-align: center;
 }
