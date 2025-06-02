@@ -3,7 +3,6 @@
 import { useState } from "react";
 import styles from "./modal.module.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useRouter } from 'next/navigation';
 
 export default function Modal({
   onClose,
@@ -12,7 +11,6 @@ export default function Modal({
   onClose: () => void;
   onSubmit: (email: string, password: string, callback: () => void) => void;
 }) {
-    const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setIsVisible] = useState(false);
