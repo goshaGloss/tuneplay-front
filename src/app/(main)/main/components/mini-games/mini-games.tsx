@@ -25,27 +25,19 @@ const MiniGames = () => {
                 <Image
                   src="/guess-note.png"
                   alt="guess-note"
-                  width={156}
-                  height={156}
+                  width={180}
+                  height={180}
                 />
-              </div>
-            </div>
-            <div className={`${styles.card} ${styles.pink}`}>
-              <div className={styles.content}>
-                <p>Музыкальная викторина</p>
-                <Image
-                  src="/musical.png"
-                  alt="musical"
-                  width={50}
-                  height={40}
-                />
+                <p style={{ color: "white" }} className={styles.playNow}>
+                  ИГРАТЬ СЕЙЧАС
+                </p>
               </div>
             </div>
           </div>
           <div className={styles.cardColumn}>
             <div className={`${styles.card} ${styles.blue}`}>
               <div className={styles.content}>
-                <p>Ритм-мастер</p>
+                <p>Закончи строчку</p>
                 <div style={{ display: "flex", gap: "10px" }}>
                   <Image
                     src="/woman-guitar.png"
@@ -54,17 +46,7 @@ const MiniGames = () => {
                     height={160}
                   />
                 </div>
-              </div>
-            </div>
-            <div className={`${styles.card} ${styles.orange}`}>
-              <div className={styles.content}>
-                <p>ИГРАТЬ ЕЩЕ</p>
-                <Image
-                  src="/play-more.png"
-                  alt="play-more"
-                  width={125}
-                  height={120}
-                />
+                <p className={styles.playNow}>ИГРАТЬ СЕЙЧАС</p>
               </div>
             </div>
           </div>

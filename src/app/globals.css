@@ -9,7 +9,7 @@
     --foreground: #ededed;
   }
 }
-body {
+body * {
   font-family: var(--montserrat-alternates);
 }
 html {

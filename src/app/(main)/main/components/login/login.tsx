@@ -34,18 +34,7 @@ const Login = ({ openModal }: { openModal: () => void }) => {
   };
   return (
     <div id="login" className={styles.login}>
-      <div className={styles.embed}>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/uuZE_IRwLNI?si=XKeNDZD4dH-3SBOM"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        />
-      </div>
+      <Image alt="login" width={600} height={650} src="/login-img.png" />
       <div className={styles.loginContainer}>
         <form>
           <Image
@@ -97,6 +86,7 @@ const Login = ({ openModal }: { openModal: () => void }) => {
               e.preventDefault();
               openModal();
             }}
+            style={{ color: "white" }}
             href="/"
           >
             Создать аккаунт

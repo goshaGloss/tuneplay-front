@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const token = localStorage.getItem("token");
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -80,13 +80,15 @@ const Header = () => {
                 height={33}
               />
             </Link>
-            <Link
-              onClick={() => setMenuOpen(false)}
-              href="#login"
-              className={styles.navLink}
-            >
-              Войти
-            </Link>
+            {!token ? (
+              <Link
+                onClick={() => setMenuOpen(false)}
+                href="#login"
+                className={styles.navLink}
+              >
+                Войти
+              </Link>
+            ) : null}
           </div>
         </nav>
       </div>

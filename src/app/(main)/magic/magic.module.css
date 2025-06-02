@@ -1,0 +1,58 @@
+.magic {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../../../public/magic.png");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.magic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 51, 124, 0.77); /* Синий tint */
+  z-index: 1;
+}
+
+.magicContainer {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  height: 100%;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.magicTitle {
+  display: flex;
+  align-items: center;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 55px;
+  line-height: 67px;
+  text-transform: uppercase;
+}
+
+.magicTitle p {
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ffb326 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.magicSubtitle {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin-top: 50px;
+  color: #ffffff;
+
+  text-shadow: 0px 4px 69.3px rgba(0, 0, 0, 0.7);
+}

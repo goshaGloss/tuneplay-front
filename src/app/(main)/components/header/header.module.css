@@ -1,8 +1,8 @@
 .header {
-  position: absolute;
+  position: fixed;
   top: 36px;
   width: 100%;
-  z-index: 999;
+  z-index: 1;
 }
 
 .header nav {
@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  color: white;
 }
 
 .goldenLogo {

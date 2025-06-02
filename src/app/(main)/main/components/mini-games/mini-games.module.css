@@ -8,6 +8,7 @@
   min-height: 100vh;
   position: relative;
   padding-top: 125px;
+  color: white;
 }
 
 .miniGamesContainer {
@@ -50,15 +51,17 @@
   font-weight: 700;
   font-size: 32px;
   line-height: 39px;
-  height: 250px;
+  height: 100%;
   color: #000000;
+  cursor: pointer;
 }
 
 .content {
-  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .card img {

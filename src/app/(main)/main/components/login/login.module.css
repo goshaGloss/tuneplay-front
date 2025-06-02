@@ -160,7 +160,7 @@
 }
 
 @media (max-width: 1575px) {
-  .embed {
+  .login > img {
     display: none;
   }
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./player.module.css";
 import Image from "next/image";
 
@@ -40,7 +41,10 @@ const Player = () => {
               Создавай свою уникальную и неповторимую мелодию
             </p>
             <div className={styles.playerCircles}>
-              <div className={styles.playerBlockCircleFirst}>
+              <Link
+                href="/music-master"
+                className={styles.playerBlockCircleFirst}
+              >
                 <p className={styles.playerBlockCircleText}>Подробнее</p>
                 <Image
                   alt="arrow-up"
@@ -48,8 +52,8 @@ const Player = () => {
                   height={12}
                   width={12}
                 />
-              </div>
-              <div className={styles.playerBlockCircleSecond}>
+              </Link>
+              <Link href="/magic" className={styles.playerBlockCircleSecond}>
                 <p className={styles.playerBlockCircleText}>Подробнее</p>
                 <Image
                   alt="arrow-up"
@@ -57,8 +61,11 @@ const Player = () => {
                   height={12}
                   width={12}
                 />
-              </div>
-              <div className={styles.playerBlockCircleThird}>
+              </Link>
+              <Link
+                href="/instruments"
+                className={styles.playerBlockCircleThird}
+              >
                 <p className={styles.playerBlockCircleText}>Подробнее</p>
                 <Image
                   alt="arrow-up"
@@ -66,7 +73,7 @@ const Player = () => {
                   height={12}
                   width={12}
                 />
-              </div>
+              </Link>
             </div>
           </div>
         </div>
