@@ -1,13 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./header.module.css";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const token = localStorage.getItem("token");
+  const [token, setToken] = useState("")
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+  
+  useEffect(() =>{
+    setToken(window.localStorage.getItem("token") ?? "")
+  },[])
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -46,24 +54,19 @@ const Header = () => {
 
           <ul className={styles.navList}>
             <li className={styles.navItem}>
-              <a href="#about" onClick={() => setMenuOpen(false)}>
+              <Link href={isHome ? '#about' : `/#about`} onClick={() => setMenuOpen(false)}>
                 О нас
-              </a>
+              </Link>
             </li>
             <li className={styles.navItem}>
-              <a href="#minigames" onClick={() => setMenuOpen(false)}>
+              <Link href={isHome ? '#minigames' : `/#minigames`} onClick={() => setMenuOpen(false)}>
                 Мини-игры
-              </a>
-            </li>
-            <li className={styles.navItem}>
-              <a href="#tariffs" onClick={() => setMenuOpen(false)}>
-                Тарифы
-              </a>
+              </Link>
             </li>
           </ul>
 
           <div className={styles.navLinks}>
-            <Link href="/" className={styles.navLink}>
+            <Link href="https://www.instagram.com/robinrokin?igsh=bW8xeHNmMjh5dTFr" className={styles.navLink}>
               <Image
                 alt="instagram"
                 src="/instagram.svg"

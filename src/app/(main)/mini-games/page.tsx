@@ -4,6 +4,9 @@ import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { useLossCounter } from "../hooks/useLossCounter";
+import { redirect } from "next/navigation";
+
 
 type Artist = {
   id: number;
@@ -23,6 +26,8 @@ function Page() {
   const [answers, setAnswers] = useState<string[]>([]);
   const [refetch, setRefetch] = useState(false);
   const [isAnswerIncorrect, setIsAnswerIncorrect] = useState(false);
+  const [score, setScore] = useState(0)
+  const [token, setToken] = useState("")
   useEffect(() => {
     axios
       .get<ArtistsResponse>("http://185.4.180.127/api/artist-game")
@@ -31,10 +36,29 @@ function Page() {
         setAnswers(data.artists.map((artist) => artist.name));
       });
   }, [refetch]);
+  
+useEffect(() => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') ?? "" : "";
+  if(!token) redirect('/')
+  setToken(token);
+}, []);
+
+    const { resetLosses,lossCount, addLoss } = useLossCounter({
+    onThirdLoss: async () => {
+      await axios.post("http://185.4.180.127:8080/api/leaderboard/create",
+        { game:"guess-artist", score },
+        { headers: { Authorization: `Bearer ${token}` } });
+    },
+  });
+
   return (
     <div className={styles.miniGames}>
       <div className={styles.miniGamesContainer}>
-        <h2 style={{ textAlign: "center", marginBottom: 24 }}>
+        {lossCount === 3 ? <button onClick={() => {
+          setScore(0)
+          setIsAnswerIncorrect(false)
+          resetLosses()
+        }} className={styles.retryBtn}>Начать сначала</button> : <>      <h2 style={{ textAlign: "center", marginBottom: 24 }}>
           Угадай артиста
         </h2>
         <div className={styles.guessContainer}>
@@ -58,8 +82,10 @@ function Page() {
                 onClick={() => {
                   if (name === artist?.name) {
                     setIsAnswerIncorrect(false);
+                    setScore(score + 1)
                     setRefetch(!refetch);
                   } else {
+                    addLoss()
                     setIsAnswerIncorrect(true);
                   }
                 }}
@@ -73,7 +99,7 @@ function Page() {
               Неправильный ответ!
             </p>
           ) : null}
-        </div>
+        </div></>}
       </div>
     </div>
   );

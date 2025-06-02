@@ -3,6 +3,8 @@
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { redirect } from "next/navigation";
+import { useLossCounter } from "../../hooks/useLossCounter";
 
 type Line = {
   id: number;
@@ -22,6 +24,9 @@ function Page() {
   const [answers, setAnswers] = useState<string[]>([]);
   const [refetch, setRefetch] = useState(false);
   const [isAnswerIncorrect, setIsAnswerIncorrect] = useState(false);
+  const [score, setScore] = useState(0)
+  const [token, setToken] = useState("")
+
   useEffect(() => {
     axios
       .get<LinesResponse>("http://185.4.180.127/api/lyrics-game")
@@ -30,9 +35,29 @@ function Page() {
         setAnswers(data.lines.map((lyric) => lyric.end));
       });
   }, [refetch]);
+
+  useEffect(() => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') ?? "" : "";
+  if(!token) redirect('/')
+  setToken(token);
+}, []);
+
+    const { resetLosses, lossCount, addLoss } = useLossCounter({
+    onThirdLoss: async () => {
+      await axios.post("http://185.4.180.127:8080/api/leaderboard/create",
+        { game:"guess-artist", score },
+        { headers: { Authorization: `Bearer ${token}` } });
+    },
+  });
+
+
   return (
     <div className={styles.miniGames}>
-      <div className={styles.miniGamesContainer}>
+             {lossCount === 3 ? <button onClick={() => {
+          setScore(0)
+          setIsAnswerIncorrect(false)
+          resetLosses()
+        }} className={styles.retryBtn}>Начать сначала</button> :      <div className={styles.miniGamesContainer}>
         <h2 style={{ textAlign: "center", marginBottom: 24 }}>
           Закончи строчку
         </h2>
@@ -47,8 +72,10 @@ function Page() {
                   console.log(lyric?.end, name);
                   if (name === lyric?.end) {
                     setIsAnswerIncorrect(false);
+                    setScore(score + 1)
                     setRefetch(!refetch);
                   } else {
+                    addLoss()
                     setIsAnswerIncorrect(true);
                   }
                 }}
@@ -63,7 +90,8 @@ function Page() {
             </p>
           ) : null}
         </div>
-      </div>
+      </div>}
+
     </div>
   );
 }

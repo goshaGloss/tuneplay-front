@@ -87,3 +87,14 @@
   margin-top: 65px;
   color: white;
 }
+
+.notesContainer{
+  display: flex;
+  gap: 12px;
+}
+
+.noteWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./mini-games.module.css";
 import Image from "next/image";
 
@@ -8,8 +9,8 @@ const MiniGames = () => {
 
       <div className={styles.miniGamesContainer}>
         <div className={styles.grid}>
-          <div className={`${styles.card} ${styles.mainGame}`}>
-            <h2>PIXEL GAME</h2>
+          <Link href='/mini-games/repeat-melody' className={`${styles.card} ${styles.mainGame}`}>
+            <h2>Повтори мелодию</h2>
             <Image
               src="/main-game.png"
               alt="main-game"
@@ -17,9 +18,9 @@ const MiniGames = () => {
               height={200}
             />
             <p className={styles.playNow}>ИГРАТЬ СЕЙЧАС</p>
-          </div>
+          </Link>
           <div className={styles.cardColumn}>
-            <div className={`${styles.card} ${styles.orange}`}>
+            <Link href='/mini-games' className={`${styles.card} ${styles.orange}`}>
               <div className={styles.content}>
                 <p>Угадай артиста</p>
                 <Image
@@ -32,10 +33,10 @@ const MiniGames = () => {
                   ИГРАТЬ СЕЙЧАС
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
           <div className={styles.cardColumn}>
-            <div className={`${styles.card} ${styles.blue}`}>
+            <Link href='/mini-games/guess-lyric' className={`${styles.card} ${styles.blue}`}>
               <div className={styles.content}>
                 <p>Закончи строчку</p>
                 <div style={{ display: "flex", gap: "10px" }}>
@@ -48,7 +49,7 @@ const MiniGames = () => {
                 </div>
                 <p className={styles.playNow}>ИГРАТЬ СЕЙЧАС</p>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

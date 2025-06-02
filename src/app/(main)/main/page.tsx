@@ -9,6 +9,7 @@ import MiniGames from "./components/mini-games/mini-games";
 import Modal from "./components/modal/Modal";
 import Player from "./components/player/player";
 import { useEffect, useState } from "react";
+
 // import Tariffs from "./components/tariffs/tariffs";
 
 export type Banner = {
@@ -42,6 +43,7 @@ export type HomeData = {
 };
 
 export default function Page() {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [index, setIndex] = useState<undefined | HomeData>(undefined);
 

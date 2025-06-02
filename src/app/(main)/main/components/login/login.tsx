@@ -1,12 +1,17 @@
+'use client';
+
+
 import Image from "next/image";
 import styles from "./login.module.css";
 import Link from "next/link";
 import axios, { AxiosResponse } from "axios";
 import { useState } from "react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { redirect } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
 const Login = ({ openModal }: { openModal: () => void }) => {
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [visible, setIsVisible] = useState(false);
@@ -28,7 +33,7 @@ const Login = ({ openModal }: { openModal: () => void }) => {
       .then(({ data }: AxiosResponse<{ token: string }>) => {
         setIsLoading(false);
         localStorage.setItem("token", data.token);
-        redirect("/profile");
+        router.push('/profile')
       })
       .catch(() => setIsLoading(false));
   };

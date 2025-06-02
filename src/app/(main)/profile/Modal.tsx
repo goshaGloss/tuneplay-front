@@ -8,15 +8,22 @@ export default function Modal({
   onSubmit,
 }: {
   onClose: () => void;
-  onSubmit: (prompt: string, title: string, keywords?: string) => void;
+  onSubmit: (prompt: string, title: string, callback:() => void) => void;
 }) {
   const [prompt, setPrompt] = useState("");
   const [title, setTitle] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = () => {
     if (prompt.trim() !== "" && title.trim() !== "") {
-      onSubmit(title, prompt);
+      setIsLoading(true)
+      onSubmit(title, prompt, () => {
+
+        setIsLoading(false)
+        onClose()
+      });
       setPrompt("");
+      setTitle("")
     }
   };
 
@@ -44,8 +51,15 @@ export default function Modal({
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.submit} onClick={handleSubmit}>
-            Сгенерировать
+                    <button
+            className={styles.submit}
+            onClick={handleSubmit}
+            disabled={isLoading}
+          >
+            <span>{isLoading ? "" : "Сгенерировать"}</span>
+            <span
+              className={`${styles.spinner} ${isLoading ? styles.show : ""}`}
+            ></span>
           </button>
         </div>
       </div>

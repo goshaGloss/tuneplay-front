@@ -21,7 +21,6 @@ export const useLossCounter = (config?: LossCounterConfig) => {
   useEffect(() => {
     if (lossCount >= maxLosses) {
       onThirdLoss?.();
-      resetLosses(); // Сбрасываем после отправки
     }
   }, [lossCount]);
 

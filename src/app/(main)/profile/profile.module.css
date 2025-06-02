@@ -45,6 +45,16 @@
   cursor: pointer;
 }
 
+.profileContent{
+  display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.profileList{
+  width: 550px;
+}
+
 @media (max-width: 900px) {
   .container {
     background-size: auto 100%;

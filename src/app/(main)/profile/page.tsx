@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import MusicPlayer from "./MusicPlayer";
 import axios, { AxiosResponse } from "axios";
 import { redirect } from "next/navigation";
+import LeaderBoard from "./LeaderBoard";
 
 type Song = {
   id: string;
@@ -19,13 +20,15 @@ type User = {
   email: string;
   id: string;
   songs: Song[];
+  leaderboard: {game:string; id:string; score:number}[]
 };
 
 const MusicProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [songs, setSongs] = useState<Song[]>([]);
+  const [leaderboard, setLeaderBoard] = useState<{game:string; id:string; score:number}[]>([])
 
-  const createSong = (title: string, theme: string) => {
+  const createSong = (title: string, theme: string, callback: () => void) => {
     const token = localStorage.getItem("token");
     if (!token) return;
     axios
@@ -35,29 +38,34 @@ const MusicProfile = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then(({ data }: AxiosResponse<Song>) => {
+        callback()
         setSongs([...songs, data]);
       });
   };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) redirect("/");
     axios
       .get("http://185.4.180.127:8080/api/customer/info", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(({ data }: AxiosResponse<User>) => {
         setIsModalOpen(false);
+        setLeaderBoard(data.leaderboard)
         setSongs(data.songs);
       });
   }, []);
 
   return (
     <div className={styles.container}>
-      <div style={{ width: 600 }}>
-        <h1 className={styles.title}>Моя музыка</h1>
-
+      <div>
+        <div className={styles.profileContent}>
+          <LeaderBoard myStats={leaderboard}/>
+          <div className={styles.profileList}>
+                    <h1 className={styles.title}>Моя музыка</h1>
         <ul className={styles.songList}>
+
+
           {songs.map((song, index) => (
             <MusicPlayer
               key={index}
@@ -74,12 +82,14 @@ const MusicProfile = () => {
         >
           Сгенерировать песню
         </button>
+          </div>
+        </div>
 
         {isModalOpen && (
           <Modal
             onClose={() => setIsModalOpen(false)}
-            onSubmit={(title: string, theme: string) => {
-              createSong(title, theme);
+            onSubmit={(title: string, theme: string, callback) => {
+              createSong(title, theme, callback);
             }}
           />
         )}
