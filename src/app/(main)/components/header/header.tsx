@@ -66,7 +66,7 @@ const Header = () => {
           </ul>
 
           <div className={styles.navLinks}>
-            <Link href="https://www.instagram.com/robinrokin?igsh=bW8xeHNmMjh5dTFr" className={styles.navLink}>
+            <Link href="https://www.instagram.com/tuneplay.kz?igsh=bW8xeHNmMjh5dTFr" className={styles.navLink}>
               <Image
                 alt="instagram"
                 src="/instagram.svg"
@@ -83,15 +83,20 @@ const Header = () => {
                 height={33}
               />
             </Link>
-            {!token ? (
               <Link
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  if(token){
+                    localStorage.clear()
+                    window.location.href = '/';
+                  }else{
+                    setMenuOpen(false)
+                  }
+                }}
                 href="#login"
                 className={styles.navLink}
               >
-                Войти
+                {!token ? "Войти" : "Выйти"}
               </Link>
-            ) : null}
           </div>
         </nav>
       </div>

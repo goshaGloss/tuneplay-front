@@ -49,10 +49,14 @@
   display: flex;
     gap: 24px;
     align-items: flex-start;
+    
 }
 
 .profileList{
-  width: 550px;
+  width: 600px;
+  display: flex
+;
+    flex-direction: column;
 }
 
 @media (max-width: 900px) {

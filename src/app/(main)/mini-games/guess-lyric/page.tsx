@@ -45,7 +45,7 @@ function Page() {
     const { resetLosses, lossCount, addLoss } = useLossCounter({
     onThirdLoss: async () => {
       await axios.post("http://185.4.180.127:8080/api/leaderboard/create",
-        { game:"guess-artist", score },
+        { game:"guess-lyric", score },
         { headers: { Authorization: `Bearer ${token}` } });
     },
   });

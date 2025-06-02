@@ -74,7 +74,7 @@ const MusicProfile = () => {
               id={song.id}
               src={"http://185.4.180.127:8080/" + song.music}
               updateSongs={() =>{
-                setSongs(songs.filter(songData => song.id !=songData.id))
+                setSongs(songs.filter(songData => song.id != songData.id))
               }}
             />
           ))}

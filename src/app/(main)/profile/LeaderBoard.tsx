@@ -2,29 +2,48 @@
 import React from 'react';
 import styles from './leaderboard.module.css';
 
-const LeaderBoard = ({myStats}: {myStats:{game:string, score:number}[]}) => {
-const bestStats = Object.values(
-  myStats.reduce((acc, stat) => {
-    if (!acc[stat.game] || stat.score > acc[stat.game].score) {
-      acc[stat.game] = stat;
-    }
-    return acc;
-  }, {} as Record<string, { game: string; score: number }>)
-);
+const LeaderBoard = ({ myStats }: { myStats: { game: string; score: number }[] }) => {
+  // Все возможные игры
+  const allGames = [
+    { id: "guess-artist", name: "Угадай артиста" },
+    { id: "guess-lyric", name: "Угадай строчку" },
+    { id: "repeat-notes", name: "Повтори мелодию" }
+  ];
+
+  // Находим максимальные скоры для каждой игры
+  const gameStats = allGames.map(game => {
+    const gameRecords = myStats.filter(stat => stat.game === game.id);
+    const maxScore = gameRecords.length > 0 
+      ? Math.max(...gameRecords.map(stat => stat.score || 0))
+      : 0;
+    
+    return {
+      game: game.name,
+      score: maxScore
+    };
+  });
 
   return (
-    <div className={styles.statsContainer}>
-      <h2 className={styles.statsTitle}>МОЯ СТАТИСТИКА</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>МОЯ СТАТИСТИКА</h2>
       
-      <div className={styles.statsGrid}>
-        <div className={`${styles.gridHeader} ${styles.gameHeader}`}>Игра</div>
-        <div className={`${styles.gridHeader} ${styles.bestHeader}`}>Рекорд</div>
+      <div className={styles.table}>
+        {/* Заголовки таблицы */}
+        <div className={styles.row}>
+          <div className={`${styles.cell} ${styles.headerCell} ${styles.gameCell}`}>Игра</div>
+          <div className={`${styles.cell} ${styles.headerCell} ${styles.scoreCell}`}>Рекорд</div>
+        </div>
         
-        {bestStats.map((stat, index) => (
-          <React.Fragment key={index}>
-            <div className={`${styles.gridCell} ${styles.gameCell}`}>{stat.game === "guess-lyric" ? "Угадай мелодию" : stat.game === "guess-artist" ? "Угадай артиста" : "Повтори мелодию"}</div>
-            <div className={`${styles.gridCell} ${styles.lastCell}`}>{stat.score}</div>
-          </React.Fragment>
+        {/* Строки с данными */}
+        {gameStats.map((stat, index) => (
+          <div className={styles.row} key={index}>
+            <div className={`${styles.cell} ${styles.gameCell}`}>
+              {stat.game}
+            </div>
+            <div className={`${styles.cell} ${styles.scoreCell}`}>
+              {stat.score ?? 0}
+            </div>
+          </div>
         ))}
       </div>
     </div>
