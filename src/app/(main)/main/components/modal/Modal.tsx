@@ -22,7 +22,7 @@ export default function Modal({
       setIsLoading(true);
       onSubmit(email, password, () =>{
          setIsLoading(false)
-        router.push('/profile')
+        window.location.href = '/profile';
 
         });
       setEmail("");
